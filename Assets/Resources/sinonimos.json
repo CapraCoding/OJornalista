@@ -1,0 +1,51 @@
+{
+  "grupos": [
+    {
+      "nome": "vitima feminina",
+      "termos": [
+        "Mulher",
+        "Passageira",
+        "Motorista"
+      ]
+    },
+    {
+      "nome": "motociclista",
+      "termos": [
+        "Motociclista",
+        "Piloto",
+        "Condutor",
+        "Homem"
+      ]
+    },
+    {
+      "nome": "chuva",
+      "termos": [
+        "Chuva forte",
+        "Temporal",
+        "Tempestade"
+      ]
+    },
+    {
+      "nome": "ferido (masculino)",
+      "termos": [
+        "fica ferido",
+        "se fere"
+      ]
+    },
+    {
+      "nome": "ferida (feminino)",
+      "termos": [
+        "fica ferida",
+        "se fere"
+      ]
+    },
+    {
+      "nome": "batida",
+      "termos": [
+        "acidente entre carros",
+        "batida entre carros",
+        "colisão entre carros"
+      ]
+    }
+  ]
+}

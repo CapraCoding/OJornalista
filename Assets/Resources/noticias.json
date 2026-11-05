@@ -1,0 +1,281 @@
+{
+  "manchetesPorDia": 1,
+  "embaralharOpcoes": true,
+  "naoRepetirFrases": true,
+  "errosParaIrPraCasa": 3,
+  "advertenciasParaDemissao": 3,
+  "chamadasGenericas": [
+    "PLANTÃO",
+    "CIDADE EM ALERTA",
+    "IMAGENS EXCLUSIVAS",
+    "VOCÊ PRECISA VER ISSO"
+  ],
+  "dias": [
+    {
+      "nome": "Dia 1 (EXEMPLO)",
+      "noticias": [
+        {
+          "titulo": "ACIDENTE EM CASCAVEL",
+          "texto": "Acidente envolvendo dois carros, no cruzamento das ruas Antônio Corradi e Osvaldo Dall Oglio, no bairro Brasmadeira, deixou mulher ferida, em Cascavel...\nCom a força do impacto, um dos veículos foi arremessado em direção à esquina e subiu na calçada...\nPassageira do automóvel, ficou ferida e recebeu os primeiros socorros no local...\nEla foi encaminhada para avaliação médica...\nMoradores afirmam que o cruzamento registra acidentes com frequência e cobram melhorias na sinalização para aumentar a segurança...",
+          "local": "BRASMADEIRA, EM CASCAVEL",
+          "campos": [
+            {
+              "rotulo": "Quem",
+              "opcoes": [
+                "Mulher",
+                "Passageira",
+                "Criança",
+                "Motociclista"
+              ]
+            },
+            {
+              "rotulo": "O quê",
+              "opcoes": [
+                "fica ferida",
+                "morre",
+                "é presa"
+              ]
+            },
+            {
+              "rotulo": "Como",
+              "opcoes": [
+                "em acidente entre carros",
+                "em atropelamento",
+                "em incêndio"
+              ]
+            }
+          ],
+          "frasesValidas": [
+            "Mulher fica ferida em acidente entre carros"
+          ],
+          "chamadasSensacionalistas": [
+            "MAIS UM ACIDENTE NO MESMO CRUZAMENTO!",
+            "MORADORES EM PÂNICO!"
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Dia 2 (EXEMPLO)",
+      "noticias": [
+        {
+          "titulo": "QUEDA DE MOTO NA BR-277",
+          "texto": "Um motociclista de 27 anos ficou ferido após perder o controle da motocicleta na BR-277, em Cascavel...\nO piloto foi atendido pelo Siate ainda na rodovia e levado ao hospital...\nSegundo a polícia rodoviária, a pista estava molhada no momento do acidente...",
+          "local": "BR-277, EM CASCAVEL",
+          "campos": [
+            {
+              "rotulo": "Quem",
+              "opcoes": [
+                "Motociclista",
+                "Piloto",
+                "Homem",
+                "Ciclista",
+                "Pedestre"
+              ]
+            },
+            {
+              "rotulo": "O quê",
+              "opcoes": [
+                "fica ferido",
+                "morre",
+                "foge"
+              ]
+            },
+            {
+              "rotulo": "Como",
+              "opcoes": [
+                "após queda na rodovia",
+                "em briga de trânsito",
+                "em assalto"
+              ]
+            }
+          ],
+          "frasesValidas": [
+            "Motociclista fica ferido após queda na rodovia"
+          ],
+          "chamadasSensacionalistas": [
+            "RODOVIA DA MORTE!",
+            "TRAGÉDIA SOBRE DUAS RODAS!"
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Dia 3 (EXEMPLO)",
+      "noticias": [
+        {
+          "titulo": "CHUVA NO CENTRO",
+          "texto": "A chuva forte do fim da tarde alagou ruas do Centro de Cascavel...\nMotoristas tiveram dificuldade para passar pelos pontos de alagamento...\nA Defesa Civil não registrou feridos...",
+          "local": "CENTRO, EM CASCAVEL",
+          "campos": [
+            {
+              "rotulo": "O quê",
+              "opcoes": [
+                "Chuva forte",
+                "Temporal",
+                "Ventania",
+                "Granizo"
+              ]
+            },
+            {
+              "rotulo": "Ação",
+              "opcoes": [
+                "alaga",
+                "destrói",
+                "interdita"
+              ]
+            },
+            {
+              "rotulo": "Onde",
+              "opcoes": [
+                "ruas do Centro",
+                "escolas",
+                "rodovia"
+              ]
+            }
+          ],
+          "frasesValidas": [
+            "Chuva forte alaga ruas do Centro"
+          ],
+          "chamadasSensacionalistas": [
+            "CIDADE DEBAIXO D'ÁGUA!",
+            "CAOS NAS RUAS!"
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Dia 4 (EXEMPLO)",
+      "noticias": [
+        {
+          "titulo": "BATIDA NO CANCELLI",
+          "texto": "Uma batida entre dois carros no cruzamento das ruas Paraná e das Palmeiras, no bairro Cancelli, deixou uma mulher ferida, em Cascavel...\nCom o impacto, um dos veículos parou sobre a calçada...\nA motorista recebeu atendimento no local e foi levada para avaliação médica...\nMoradores dizem que o cruzamento é perigoso e pedem mais sinalização...",
+          "local": "CANCELLI, EM CASCAVEL",
+          "campos": [
+            {
+              "rotulo": "Quem",
+              "opcoes": [
+                "Mulher",
+                "Motorista",
+                "Passageira",
+                "Criança"
+              ]
+            },
+            {
+              "rotulo": "O quê",
+              "opcoes": [
+                "fica ferida",
+                "morre",
+                "é presa"
+              ]
+            },
+            {
+              "rotulo": "Como",
+              "opcoes": [
+                "em acidente entre carros",
+                "em atropelamento",
+                "em incêndio"
+              ]
+            }
+          ],
+          "frasesValidas": [
+            "Mulher fica ferida em acidente entre carros"
+          ],
+          "chamadasSensacionalistas": [
+            "DE NOVO!",
+            "ATÉ QUANDO?!"
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Dia 5 (EXEMPLO)",
+      "noticias": [
+        {
+          "titulo": "MOTOCICLISTA SE FERE NA BR-467",
+          "texto": "Um motociclista ficou ferido depois de cair da moto na BR-467, em Cascavel...\nO condutor foi socorrido e levado ao hospital...\nA pista estava molhada no momento da queda...",
+          "local": "BR-467, EM CASCAVEL",
+          "campos": [
+            {
+              "rotulo": "Quem",
+              "opcoes": [
+                "Motociclista",
+                "Piloto",
+                "Condutor",
+                "Homem",
+                "Ciclista"
+              ]
+            },
+            {
+              "rotulo": "O quê",
+              "opcoes": [
+                "fica ferido",
+                "morre",
+                "foge"
+              ]
+            },
+            {
+              "rotulo": "Como",
+              "opcoes": [
+                "após queda na rodovia",
+                "em briga de trânsito",
+                "em assalto"
+              ]
+            }
+          ],
+          "frasesValidas": [
+            "Motociclista fica ferido após queda na rodovia"
+          ],
+          "chamadasSensacionalistas": [
+            "MAIS UMA VÍTIMA NA RODOVIA!",
+            "IMAGENS FORTES!"
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Dia 6 (EXEMPLO)",
+      "noticias": [
+        {
+          "titulo": "TEMPORAL NO CENTRO",
+          "texto": "Um temporal no início da noite deixou ruas do Centro de Cascavel alagadas...\nCarros ficaram parados nos pontos de alagamento...\nNão houve registro de feridos...",
+          "local": "CENTRO, EM CASCAVEL",
+          "campos": [
+            {
+              "rotulo": "O quê",
+              "opcoes": [
+                "Temporal",
+                "Chuva forte",
+                "Ventania",
+                "Granizo"
+              ]
+            },
+            {
+              "rotulo": "Ação",
+              "opcoes": [
+                "alaga",
+                "destrói",
+                "interdita"
+              ]
+            },
+            {
+              "rotulo": "Onde",
+              "opcoes": [
+                "ruas do Centro",
+                "escolas",
+                "rodovia"
+              ]
+            }
+          ],
+          "frasesValidas": [
+            "Temporal alaga ruas do Centro"
+          ],
+          "chamadasSensacionalistas": [
+            "O CÉU DESABOU!",
+            "CIDADE EM ALERTA!"
+          ]
+        }
+      ]
+    }
+  ]
+}
