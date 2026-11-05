@@ -13,6 +13,9 @@ namespace Jornalista
         const string ReportKey = "jornalista_reportagem";
         const string PublishedKey = "jornalista_publicadas";
         const string StrikesKey = "jornalista_advertencias";
+        const string DaysPublishedKey = "jornalista_dias_publicados";
+        const string LastPublishedDayKey = "jornalista_ultimo_dia_publicado";
+        const string GoodStreakKey = "jornalista_dias_corretos";
 
         public static GameManager I { get; private set; }
 
@@ -22,6 +25,10 @@ namespace Jornalista
         public Reportagem LastReport { get; private set; }
         public int PublishedCount { get; private set; }
         public int Strikes { get; private set; }
+        public int DaysPublished { get; private set; }
+        public int GoodStreak { get; private set; }
+        int lastPublishedDay;
+        bool sentHomeToday;
         string hudTime = "07:00";
         public bool OverlayOpen => tv != null && tv.gameObject.activeSelf;
 
@@ -62,6 +69,9 @@ namespace Jornalista
             LastReport = LoadReport();
             PublishedCount = PlayerPrefs.GetInt(PublishedKey, 0);
             Strikes = PlayerPrefs.GetInt(StrikesKey, 0);
+            DaysPublished = PlayerPrefs.GetInt(DaysPublishedKey, 0);
+            lastPublishedDay = PlayerPrefs.GetInt(LastPublishedDayKey, 0);
+            GoodStreak = PlayerPrefs.GetInt(GoodStreakKey, 0);
             if (Strikes >= Banco.advertenciasParaDemissao) ResetProgress();
 
             EnsureCamera();
@@ -148,7 +158,8 @@ namespace Jornalista
             hudTime = time;
             string text = $"DIA {Day}  ·  {time}";
             if (Strikes > 0)
-                text += $"\n<color=#FF6B5E>ADVERTÊNCIAS {Strikes}/{Banco.advertenciasParaDemissao}</color>";
+                text += $"\n<color=#FF6B5E>ADVERTÊNCIAS {Strikes}/{Banco.advertenciasParaDemissao}</color>" +
+                        $"  <size=26>· {GoodStreak}/{Banco.diasCorretosParaRetirarAdvertencia} dias certos</size>";
             hud.text = text;
         }
 
@@ -180,8 +191,24 @@ namespace Jornalista
             SetHud("18:20");
         });
 
+        void CloseDay()
+        {
+            bool goodDay = !sentHomeToday && lastPublishedDay == Day;
+            sentHomeToday = false;
+            if (!goodDay) return;
+            GoodStreak++;
+            if (GoodStreak >= Banco.diasCorretosParaRetirarAdvertencia)
+            {
+                GoodStreak = 0;
+                if (Strikes > 0) Strikes--;
+                PlayerPrefs.SetInt(StrikesKey, Strikes);
+            }
+            PlayerPrefs.SetInt(GoodStreakKey, GoodStreak);
+        }
+
         public void Sleep() => Transition(() =>
         {
+            CloseDay();
             Day++;
             PlayerPrefs.SetInt(DayKey, Day);
             PlayerPrefs.Save();
@@ -210,15 +237,22 @@ namespace Jornalista
             };
             PublishedCount++;
             PlayerPrefs.SetInt(PublishedKey, PublishedCount);
-            Strikes = 0;
-            PlayerPrefs.SetInt(StrikesKey, Strikes);
-            SetHud(hudTime);
+            if (lastPublishedDay != Day)
+            {
+                lastPublishedDay = Day;
+                DaysPublished++;
+                PlayerPrefs.SetInt(LastPublishedDayKey, lastPublishedDay);
+                PlayerPrefs.SetInt(DaysPublishedKey, DaysPublished);
+            }
             PlayerPrefs.SetString(ReportKey, JsonUtility.ToJson(LastReport));
             PlayerPrefs.Save();
         }
 
         public bool RegisterBadDay()
         {
+            sentHomeToday = true;
+            GoodStreak = 0;
+            PlayerPrefs.SetInt(GoodStreakKey, GoodStreak);
             Strikes++;
             PlayerPrefs.SetInt(StrikesKey, Strikes);
             PlayerPrefs.Save();
@@ -248,10 +282,13 @@ namespace Jornalista
             catch { return null; }
         }
 
-        int CycleLength => Banco.dias != null ? Banco.dias.Length : 0;
+        bool UsesModels => Banco.modelos != null && Banco.modelos.Length > 0;
+
+        int CycleLength => UsesModels ? NewsGenerator.CycleDays(Banco) : (Banco.dias != null ? Banco.dias.Length : 0);
 
         public List<Noticia> TodaysNews()
         {
+            if (UsesModels) return NewsGenerator.ForDay(Banco, Day);
             var list = new List<Noticia>();
             if (CycleLength == 0) return list;
             var dia = Banco.dias[(Day - 1) % CycleLength];
@@ -271,6 +308,13 @@ namespace Jornalista
             PlayerPrefs.DeleteKey(ReportKey);
             PlayerPrefs.DeleteKey(PublishedKey);
             PlayerPrefs.DeleteKey(StrikesKey);
+            PlayerPrefs.DeleteKey(DaysPublishedKey);
+            PlayerPrefs.DeleteKey(LastPublishedDayKey);
+            PlayerPrefs.DeleteKey(GoodStreakKey);
+            DaysPublished = 0;
+            lastPublishedDay = 0;
+            GoodStreak = 0;
+            sentHomeToday = false;
             PublishedCount = 0;
             Strikes = 0;
             AiredHistory.Clear();

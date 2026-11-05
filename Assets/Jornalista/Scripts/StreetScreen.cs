@@ -165,8 +165,8 @@ namespace Jornalista
             sky.color = toWork ? new Color(0.55f, 0.80f, 0.98f) : new Color(0.93f, 0.55f, 0.38f);
 
             billboard.SetReport(gm.LastReport);
-            danger.gameObject.SetActive(gm.PublishedCount > 0);
-            danger.SetLevel(gm.PublishedCount);
+            danger.gameObject.SetActive(gm.DaysPublished > 0);
+            danger.SetLevel(gm.DaysPublished);
 
             Refresh(false);
         }

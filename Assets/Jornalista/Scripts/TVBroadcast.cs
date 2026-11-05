@@ -59,10 +59,14 @@ namespace Jornalista
             reading.resizeTextMaxSize = 36;
 
             var loc = UI.Img(s, "GCLocal", new Color(0.75f, 0.08f, 0.08f));
-            loc.rectTransform.Anchor(0.03f, 0.235f, 0.55f, 0.3f);
+            loc.rectTransform.Anchor(0.03f, 0.235f, 0.97f, 0.3f);
             gcLocalGo = loc.gameObject;
             gcLocal = UI.Txt(loc.transform, "Local", "", 28, Color.white, TextAnchor.MiddleLeft, FontStyle.Bold);
             gcLocal.rectTransform.Anchor(0.03f, 0, 0.97f, 1);
+            gcLocal.verticalOverflow = VerticalWrapMode.Truncate;
+            gcLocal.resizeTextForBestFit = true;
+            gcLocal.resizeTextMinSize = 10;
+            gcLocal.resizeTextMaxSize = 28;
             var fr = UI.Img(s, "GCFrase", new Color(0.97f, 0.97f, 0.97f));
             fr.rectTransform.Anchor(0.03f, 0.12f, 0.97f, 0.235f);
             gcFrase = UI.Txt(fr.transform, "Frase", "", 44, new Color(0.06f, 0.06f, 0.08f), TextAnchor.MiddleLeft, FontStyle.Bold);
@@ -99,9 +103,10 @@ namespace Jornalista
             if (captions.Count == 0 && genericas != null)
                 foreach (var c in genericas) if (!string.IsNullOrWhiteSpace(c)) captions.Add(c);
             if (captions.Count == 0) captions.AddRange(Fallback);
+            for (int i = 0; i < captions.Count; i++) captions[i] = captions[i].ToUpperInvariant();
 
             gcLocalGo.SetActive(!string.IsNullOrEmpty(r.local));
-            gcLocal.text = string.IsNullOrEmpty(r.local) ? "" : r.local.ToUpperInvariant() + " ///";
+            gcLocal.text = NewsLoader.LocalLine(r.local);
             gcFrase.text = (r.frase ?? "").ToUpperInvariant();
 
             var tick = new List<string>();

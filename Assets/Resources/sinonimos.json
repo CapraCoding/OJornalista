@@ -1,50 +1,406 @@
 {
   "grupos": [
     {
-      "nome": "vitima feminina",
+      "nome": "Mulher motorista",
       "termos": [
-        "Mulher",
-        "Passageira",
-        "Motorista"
+        "mulher",
+        "motorista",
+        "condutora",
+        "motociclista",
+        "cidadã",
+        "vítima"
       ]
     },
     {
-      "nome": "motociclista",
+      "nome": "Homem motorista",
       "termos": [
-        "Motociclista",
-        "Piloto",
-        "Condutor",
-        "Homem"
+        "homem",
+        "motorista",
+        "motociclista",
+        "condutor",
+        "cidadão",
+        "vítima"
       ]
     },
     {
-      "nome": "chuva",
+      "nome": "Pessoa ao volante",
       "termos": [
-        "Chuva forte",
-        "Temporal",
-        "Tempestade"
+        "motorista",
+        "pessoa que dirigia",
+        "homem ao volante",
+        "mulher ao volante"
       ]
     },
     {
-      "nome": "ferido (masculino)",
+      "nome": "Motociclista",
       "termos": [
-        "fica ferido",
-        "se fere"
+        "motociclista",
+        "piloto da moto",
+        "homem na motocicleta",
+        "mulher na motocicleta"
       ]
     },
     {
-      "nome": "ferida (feminino)",
+      "nome": "Passageiro",
       "termos": [
-        "fica ferida",
-        "se fere"
+        "passageiro",
+        "ocupante",
+        "acompanhante",
+        "garupa"
       ]
     },
     {
-      "nome": "batida",
+      "nome": "Pedestre",
       "termos": [
-        "acidente entre carros",
-        "batida entre carros",
-        "colisão entre carros"
+        "pedestre",
+        "pessoa que caminhava",
+        "homem a pé",
+        "mulher a pé"
+      ]
+    },
+    {
+      "nome": "Ciclista",
+      "termos": [
+        "ciclista",
+        "pessoa que estava de bicicleta",
+        "homem na bicicleta",
+        "mulher na bicicleta"
+      ]
+    },
+    {
+      "nome": "Vítima",
+      "termos": [
+        "vítima",
+        "pessoa ferida",
+        "homem ferido",
+        "mulher ferida",
+        "rapaz",
+        "jovem",
+        "idoso",
+        "criança"
+      ]
+    },
+    {
+      "nome": "Criança",
+      "termos": [
+        "criança",
+        "menino",
+        "menina",
+        "garoto",
+        "garota"
+      ]
+    },
+    {
+      "nome": "Adolescente",
+      "termos": [
+        "adolescente",
+        "jovem",
+        "rapaz",
+        "garota"
+      ]
+    },
+    {
+      "nome": "Idoso",
+      "termos": [
+        "idoso",
+        "homem de idade",
+        "mulher de idade",
+        "pessoa idosa"
+      ]
+    },
+    {
+      "nome": "Veículo",
+      "termos": [
+        "veículo",
+        "automóvel",
+        "carro",
+        "caminhonete",
+        "picape"
+      ]
+    },
+    {
+      "nome": "Motocicleta",
+      "termos": [
+        "motocicleta",
+        "moto"
+      ]
+    },
+    {
+      "nome": "Bicicleta",
+      "termos": [
+        "bicicleta"
+      ]
+    },
+    {
+      "nome": "Batida",
+      "termos": [
+        "batida",
+        "acidente",
+        "acidente de trânsito",
+        "impacto",
+        "engavetamento"
+      ]
+    },
+    {
+      "nome": "Atingir",
+      "termos": [
+        "atingir",
+        "bater",
+        "acertar",
+        "atingir a traseira",
+        "atingir a lateral",
+        "atingir a frente"
+      ]
+    },
+    {
+      "nome": "Bater",
+      "termos": [
+        "bater",
+        "atingir",
+        "acertar",
+        "se envolver em batida"
+      ]
+    },
+    {
+      "nome": "Cair",
+      "termos": [
+        "cair",
+        "tombar",
+        "ir ao chão",
+        "ser lançado ao asfalto",
+        "ficar caído"
+      ]
+    },
+    {
+      "nome": "Capotar",
+      "termos": [
+        "capotar",
+        "tombar",
+        "virar"
+      ]
+    },
+    {
+      "nome": "Sair da pista",
+      "termos": [
+        "sair da pista",
+        "deixar a pista",
+        "sair da via"
+      ]
+    },
+    {
+      "nome": "Fugir",
+      "termos": [
+        "fugir",
+        "deixar o local",
+        "escapar",
+        "sair antes da chegada da equipe"
+      ]
+    },
+    {
+      "nome": "Agressão",
+      "termos": [
+        "agressão",
+        "ataque",
+        "violência",
+        "agressão física"
+      ]
+    },
+    {
+      "nome": "Ferimento",
+      "termos": [
+        "ferimento",
+        "lesão",
+        "machucado",
+        "corte",
+        "escoriação",
+        "contusão"
+      ]
+    },
+    {
+      "nome": "Fratura",
+      "termos": [
+        "fratura",
+        "osso quebrado",
+        "fratura exposta",
+        "fratura sem exposição óssea"
+      ]
+    },
+    {
+      "nome": "Atendimento",
+      "termos": [
+        "atendimento",
+        "primeiros socorros",
+        "avaliação",
+        "assistência"
+      ]
+    },
+    {
+      "nome": "Socorristas",
+      "termos": [
+        "socorristas",
+        "equipe de socorro",
+        "equipe de atendimento"
+      ]
+    },
+    {
+      "nome": "Encaminhamento",
+      "termos": [
+        "encaminhado",
+        "levado",
+        "transportado",
+        "conduzido ao hospital",
+        "levado à UPA"
+      ]
+    },
+    {
+      "nome": "Polícia Militar",
+      "termos": [
+        "Polícia Militar",
+        "PM",
+        "equipe policial",
+        "policiais militares"
+      ]
+    },
+    {
+      "nome": "Polícia Civil",
+      "termos": [
+        "Polícia Civil",
+        "PCPR",
+        "investigadores",
+        "equipe da Polícia Civil"
+      ]
+    },
+    {
+      "nome": "Guarda Municipal",
+      "termos": [
+        "Guarda Municipal",
+        "GM",
+        "agentes da Guarda Municipal"
+      ]
+    },
+    {
+      "nome": "Corpo de Bombeiros",
+      "termos": [
+        "Corpo de Bombeiros",
+        "bombeiros",
+        "equipe dos bombeiros",
+        "Siate"
+      ]
+    },
+    {
+      "nome": "Samu",
+      "termos": [
+        "Samu",
+        "equipe do Samu",
+        "socorristas do Samu"
+      ]
+    },
+    {
+      "nome": "Local",
+      "termos": [
+        "local",
+        "trecho",
+        "região",
+        "bairro",
+        "cruzamento",
+        "esquina",
+        "via",
+        "avenida",
+        "rua"
+      ]
+    },
+    {
+      "nome": "Residência",
+      "termos": [
+        "casa",
+        "residência",
+        "imóvel",
+        "moradia"
+      ]
+    },
+    {
+      "nome": "Comércio",
+      "termos": [
+        "comércio",
+        "estabelecimento",
+        "loja",
+        "empresa"
+      ]
+    },
+    {
+      "nome": "Suspeito",
+      "termos": [
+        "suspeito",
+        "investigado",
+        "homem apontado",
+        "mulher apontada",
+        "pessoa suspeita"
+      ]
+    },
+    {
+      "nome": "Prisão",
+      "termos": [
+        "preso",
+        "detido",
+        "capturado",
+        "encaminhado à delegacia"
+      ]
+    },
+    {
+      "nome": "Apreensão",
+      "termos": [
+        "apreendido",
+        "recolhido",
+        "encontrado",
+        "localizado",
+        "confiscado"
+      ]
+    },
+    {
+      "nome": "Droga",
+      "termos": [
+        "droga",
+        "entorpecente",
+        "substância",
+        "material ilícito"
+      ]
+    },
+    {
+      "nome": "Arma",
+      "termos": [
+        "arma",
+        "arma de fogo",
+        "revólver",
+        "pistola",
+        "objeto utilizado na agressão"
+      ]
+    },
+    {
+      "nome": "Danos",
+      "termos": [
+        "danos materiais",
+        "prejuízos",
+        "avarias",
+        "danos na parte dianteira",
+        "danos na lateral"
+      ]
+    },
+    {
+      "nome": "Sem feridos",
+      "termos": [
+        "ninguém ficou ferido",
+        "não houve registro de feridos",
+        "ocorrência terminou sem vítimas"
+      ]
+    },
+    {
+      "nome": "Morte",
+      "termos": [
+        "morte",
+        "óbito",
+        "vítima morreu",
+        "morreu no local",
+        "não resistiu aos ferimentos"
       ]
     }
   ]

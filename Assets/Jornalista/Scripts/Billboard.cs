@@ -50,12 +50,13 @@ namespace Jornalista
                 .rectTransform.Anchor(0.5f, 0.52f, 0.97f, 0.7f);
 
             var loc = UI.Img(s, "GCLocal", new Color(0.75f, 0.08f, 0.08f));
-            loc.rectTransform.Anchor(0.03f, 0.36f, 0.62f, 0.5f);
+            loc.rectTransform.Anchor(0.03f, 0.36f, 0.97f, 0.51f);
             localGo = loc.gameObject;
             local = UI.Txt(loc.transform, "Local", "", 26, Color.white, TextAnchor.MiddleLeft, FontStyle.Bold);
-            local.rectTransform.Anchor(0.03f, 0, 0.97f, 1);
+            local.rectTransform.Anchor(0.015f, 0.05f, 0.985f, 0.95f);
+            local.verticalOverflow = VerticalWrapMode.Truncate;
             local.resizeTextForBestFit = true;
-            local.resizeTextMinSize = 12;
+            local.resizeTextMinSize = 8;
             local.resizeTextMaxSize = 26;
 
             var fr = UI.Img(s, "GCFrase", new Color(0.97f, 0.97f, 0.97f));
@@ -63,7 +64,8 @@ namespace Jornalista
             frase = UI.Txt(fr.transform, "Frase", "", 44, new Color(0.06f, 0.06f, 0.08f), TextAnchor.MiddleLeft, FontStyle.Bold);
             frase.rectTransform.Anchor(0.02f, 0.05f, 0.98f, 0.95f);
             frase.resizeTextForBestFit = true;
-            frase.resizeTextMinSize = 16;
+            frase.verticalOverflow = VerticalWrapMode.Truncate;
+            frase.resizeTextMinSize = 12;
             frase.resizeTextMaxSize = 46;
 
             SetReport(null);
@@ -75,9 +77,10 @@ namespace Jornalista
             if (has)
             {
                 captions = r.chamadas != null && r.chamadas.Length > 0 ? r.chamadas : new[] { "URGENTE!" };
+                captions = System.Array.ConvertAll(captions, c => (c ?? "").ToUpperInvariant());
                 frase.text = r.frase.ToUpperInvariant();
                 localGo.SetActive(!string.IsNullOrEmpty(r.local));
-                local.text = string.IsNullOrEmpty(r.local) ? "" : r.local.ToUpperInvariant() + " ///";
+                local.text = NewsLoader.LocalLine(r.local);
             }
             else
             {

@@ -60,7 +60,7 @@ namespace Jornalista
 
             player = PlayerView.Create(rt);
             var p = (RectTransform)player.transform;
-            p.anchorMin = p.anchorMax = new Vector2(0.61f, 0.1f);
+            p.anchorMin = p.anchorMax = new Vector2(0.70f, 0.1f);
             p.anchoredPosition = Vector2.zero;
 
             hint = UI.Txt(rt, "Dica", "", 40, Color.white, TextAnchor.MiddleCenter, FontStyle.Bold).WithShadow();
@@ -102,7 +102,7 @@ namespace Jornalista
 
         void BuildTV(RectTransform rt)
         {
-            homeTv = HomeTV.Create(rt, 0.355f, 0.10f, 0.555f, 0.60f, () =>
+            homeTv = HomeTV.Create(rt, 0.42f, 0.10f, 0.62f, 0.60f, () =>
             {
                 homeTv.StopPulse();
                 gm.WatchTV();

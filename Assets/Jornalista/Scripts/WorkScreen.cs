@@ -18,7 +18,7 @@ namespace Jornalista
         RectTransform monitor, screen;
         Vector2 monitorBase;
 
-        GameObject filesView;
+        GameObject filesView, manualPanel;
         Text filesHeader;
         RectTransform filesList;
 
@@ -41,6 +41,9 @@ namespace Jornalista
         string[][] shown;
         List<Image>[] optionImages;
         List<Text>[] optionTexts;
+        string[] labels;
+        bool[][] okOption;
+        EditorPopup editor;
 
         public void Build(GameManager gm)
         {
@@ -65,13 +68,15 @@ namespace Jornalista
             BuildFilesView();
             BuildEditorView();
             BuildEndPanel();
+            BuildManual();
+            editor = EditorPopup.Create(rt);
         }
 
         void BuildFilesView()
         {
             filesView = UI.NewRect(screen, "Arquivos").Stretch().gameObject;
             filesHeader = UI.Txt(filesView.transform, "Titulo", "", 38, Accent, TextAnchor.MiddleLeft, FontStyle.Bold);
-            filesHeader.rectTransform.Anchor(0.03f, 0.87f, 0.97f, 0.97f);
+            filesHeader.rectTransform.Anchor(0.03f, 0.87f, 0.76f, 0.97f);
             UI.Txt(filesView.transform, "Sub", "Abra uma lauda para escrever a frase do GC.", 28, Muted, TextAnchor.MiddleLeft)
                 .rectTransform.Anchor(0.03f, 0.80f, 0.97f, 0.87f);
 
@@ -83,6 +88,41 @@ namespace Jornalista
             v.childForceExpandWidth = true;
             v.childForceExpandHeight = false;
             v.childAlignment = TextAnchor.UpperCenter;
+        }
+
+        void BuildManual()
+        {
+            var lists = gm.Banco.manual;
+            if (lists == null || lists.Length == 0) return;
+
+            var sb = new System.Text.StringBuilder();
+            foreach (var l in lists)
+            {
+                if (l == null || l.itens == null || l.itens.Length == 0) continue;
+                if (sb.Length > 0) sb.Append("\n\n");
+                sb.Append("<b>").Append((l.chave ?? "").ToUpperInvariant()).Append("</b>");
+                foreach (var item in l.itens)
+                    if (!string.IsNullOrWhiteSpace(item)) sb.Append("\n• ").Append(item.Trim());
+            }
+            if (sb.Length == 0) return;
+
+            UI.Btn(filesView.transform, "Manual", "MANUAL", Option, Color.white, 28, () => manualPanel.SetActive(true))
+                .GetComponent<RectTransform>().Anchor(0.78f, 0.88f, 0.97f, 0.97f);
+
+            var p = UI.Img(screen, "ManualRedacao", new Color(0.05f, 0.06f, 0.09f, 0.97f), null, true);
+            p.rectTransform.Stretch();
+            manualPanel = p.gameObject;
+            UI.Txt(p.transform, "Titulo", "MANUAL DE REDAÇÃO", 40, Accent, TextAnchor.MiddleLeft, FontStyle.Bold)
+                .rectTransform.Anchor(0.04f, 0.88f, 0.75f, 0.98f);
+            UI.Btn(p.transform, "Fechar", "FECHAR", Option, Color.white, 28, () => manualPanel.SetActive(false))
+                .GetComponent<RectTransform>().Anchor(0.78f, 0.89f, 0.97f, 0.98f);
+            var body = UI.Txt(p.transform, "Texto", sb.ToString(), 26, new Color(0.9f, 0.92f, 0.95f), TextAnchor.UpperLeft);
+            body.rectTransform.Anchor(0.04f, 0.03f, 0.96f, 0.86f);
+            body.verticalOverflow = VerticalWrapMode.Truncate;
+            body.resizeTextForBestFit = true;
+            body.resizeTextMinSize = 12;
+            body.resizeTextMaxSize = 26;
+            manualPanel.SetActive(false);
         }
 
         void BuildEditorView()
@@ -115,9 +155,12 @@ namespace Jornalista
             v.childForceExpandHeight = true;
 
             var gcLocal = UI.Img(t, "GCLocal", new Color(0.70f, 0.08f, 0.08f));
-            gcLocal.rectTransform.Anchor(0.02f, 0.205f, 0.6f, 0.255f);
+            gcLocal.rectTransform.Anchor(0.02f, 0.205f, 0.98f, 0.255f);
             previewLocal = UI.Txt(gcLocal.transform, "Local", "", 24, Color.white, TextAnchor.MiddleLeft, FontStyle.Bold);
-            previewLocal.rectTransform.Anchor(0.02f, 0, 0.98f, 1);
+            previewLocal.rectTransform.Anchor(0.01f, 0.05f, 0.99f, 0.95f);
+            previewLocal.resizeTextForBestFit = true;
+            previewLocal.resizeTextMinSize = 10;
+            previewLocal.resizeTextMaxSize = 24;
             var gcFrase = UI.Img(t, "GCFrase", new Color(0.97f, 0.97f, 0.97f));
             gcFrase.rectTransform.Anchor(0.02f, 0.12f, 0.98f, 0.205f);
             previewFrase = UI.Txt(gcFrase.transform, "Frase", "", 34, new Color(0.08f, 0.08f, 0.1f), TextAnchor.MiddleLeft, FontStyle.Bold);
@@ -128,6 +171,10 @@ namespace Jornalista
 
             feedback = UI.Txt(t, "Feedback", "", 26, Bad, TextAnchor.MiddleLeft, FontStyle.Bold);
             feedback.rectTransform.Anchor(0.02f, 0.01f, 0.72f, 0.11f);
+            feedback.verticalOverflow = VerticalWrapMode.Truncate;
+            feedback.resizeTextForBestFit = true;
+            feedback.resizeTextMinSize = 14;
+            feedback.resizeTextMaxSize = 26;
 
             publish = UI.Btn(t, "Publicar", "PUBLICAR", new Color(0.80f, 0.12f, 0.12f), Color.white, 36, Publish);
             publish.GetComponent<RectTransform>().Anchor(0.74f, 0.015f, 0.98f, 0.105f);
@@ -164,6 +211,8 @@ namespace Jornalista
             current = -1;
             errorsToday = 0;
             UpdateErrors();
+            if (manualPanel != null) manualPanel.SetActive(false);
+            editor.Hide();
             endPanel.SetActive(false);
 
             if (news.Count == 0)
@@ -214,12 +263,54 @@ namespace Jornalista
 
             header.text = string.IsNullOrEmpty(n.titulo) ? "LAUDA" : n.titulo.ToUpperInvariant();
             body.text = (n.texto ?? "").Replace("\\n", "\n");
-            previewLocal.text = string.IsNullOrEmpty(n.local) ? "" : n.local.ToUpperInvariant() + " ///";
+            previewLocal.text = NewsLoader.LocalLine(n.local);
             previewLocal.transform.parent.gameObject.SetActive(!string.IsNullOrEmpty(n.local));
             feedback.text = "";
 
             BuildSlots(n);
+            AnalyzeCombos(n);
             UpdatePreview();
+        }
+
+        void AnalyzeCombos(Noticia n)
+        {
+            int count = shown.Length;
+            okOption = null;
+            if (count == 0) return;
+            long total = 1;
+            for (int s = 0; s < count; s++)
+            {
+                if (shown[s].Length == 0) return;
+                total *= shown[s].Length;
+            }
+            if (total > 4096) return;
+
+            okOption = new bool[count][];
+            for (int s = 0; s < count; s++) okOption[s] = new bool[shown[s].Length];
+            var idx = new int[count];
+            var parts = new string[count];
+            for (long c = 0; c < total; c++)
+            {
+                long rem = c;
+                for (int s = 0; s < count; s++)
+                {
+                    int len = shown[s].Length;
+                    idx[s] = (int)(rem % len);
+                    rem /= len;
+                    parts[s] = shown[s][idx[s]];
+                }
+                if (HeadlineValidator.IsCorrect(string.Join(" ", parts), n.frasesValidas))
+                    for (int s = 0; s < count; s++) okOption[s][idx[s]] = true;
+            }
+        }
+
+        List<int> WrongSlots()
+        {
+            var wrong = new List<int>();
+            if (okOption == null) return wrong;
+            for (int s = 0; s < selected.Length; s++)
+                if (selected[s] >= 0 && !okOption[s][selected[s]]) wrong.Add(s);
+            return wrong;
         }
 
         void BuildSlots(Noticia n)
@@ -228,6 +319,7 @@ namespace Jornalista
             int count = n.campos != null ? n.campos.Length : 0;
             selected = new int[count];
             shown = new string[count][];
+            labels = new string[count];
             optionImages = new List<Image>[count];
             optionTexts = new List<Text>[count];
 
@@ -235,6 +327,7 @@ namespace Jornalista
             {
                 selected[s] = -1;
                 var campo = n.campos[s];
+                labels[s] = string.IsNullOrEmpty(campo.rotulo) ? $"bloco {s + 1}" : campo.rotulo;
                 var opts = new List<string>(campo.opcoes ?? new string[0]);
                 if (gm.Banco.embaralharOpcoes) Shuffle(opts);
                 shown[s] = opts.ToArray();
@@ -311,19 +404,48 @@ namespace Jornalista
             var n = news[current];
             string frase = CurrentPhrase(false);
 
-            if (!HeadlineValidator.IsValid(frase, n.frasesValidas))
+            if (!HeadlineValidator.IsCorrect(frase, n.frasesValidas))
             {
                 errorsToday++;
                 UpdateErrors();
                 int limit = gm.Banco.errosParaIrPraCasa;
+                var wrong = WrongSlots();
+                foreach (var w in wrong)
+                {
+                    optionImages[w][selected[w]].color = Bad;
+                    optionTexts[w][selected[w]].color = Color.white;
+                }
                 if (errorsToday >= limit)
                 {
                     SentHome();
                     return;
                 }
-                Reject(limit - errorsToday == 1
-                    ? "O editor recusou: a frase não bate com os fatos. Mais um erro e você vai pra casa."
-                    : "O editor recusou: a frase não bate com os fatos. Refaça.");
+
+                string warn = limit - errorsToday == 1 ? " Mais um erro e você vai pra casa." : "";
+                string count = $"ERRO {errorsToday} DE {limit}";
+                string mismatch = Agreement.Mismatch(frase);
+                if (mismatch != null)
+                {
+                    Reject($"Erro de concordância: {mismatch}." + warn);
+                    editor.ShowAgreement(mismatch, count);
+                }
+                else if (wrong.Count > 0)
+                {
+                    var quoted = new List<string>();
+                    var where = new List<string>();
+                    foreach (var w in wrong)
+                    {
+                        quoted.Add($"“{shown[w][selected[w]]}”");
+                        where.Add($"{quoted[quoted.Count - 1]} ({labels[w]})");
+                    }
+                    Reject((wrong.Count == 1 ? "Erro em " : "Erros em ") + string.Join(", ", where) + ": não bate com a lauda." + warn);
+                    editor.ShowFact(string.Join(" e ", quoted), count);
+                }
+                else
+                {
+                    Reject("Os blocos não combinam entre si." + warn);
+                    editor.ShowCombination(count);
+                }
                 return;
             }
 
@@ -332,9 +454,9 @@ namespace Jornalista
                 int day = AiredHistory.AiredOnDay(frase);
                 if (day > 0)
                 {
-                    Reject(day == gm.Day
-                        ? "Essa frase já foi ao ar hoje. Troque um termo."
-                        : $"Essa frase já foi ao ar no dia {day}. Troque um termo.");
+                    string when = day == gm.Day ? "hoje" : $"no dia {day}";
+                    Reject($"Essa frase já foi ao ar {when}. Troque um termo.");
+                    editor.ShowRepeat(when);
                     return;
                 }
             }
@@ -353,9 +475,9 @@ namespace Jornalista
             endTitle.color = Accent;
             homeButton.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(false);
-            endText.text = message ?? (doneCount == 1
-                ? "Manchete publicada.\nA reportagem já está no outdoor da rua."
-                : $"{doneCount} manchetes publicadas.\nA última está no outdoor da rua.");
+            endText.text = message ?? (remaining
+                ? $"{doneCount} de {news.Count} manchetes publicadas hoje.\nA reportagem já está no outdoor da rua."
+                : $"Todas as {news.Count} manchetes do dia publicadas.\nA última está no outdoor da rua.");
             nextButton.gameObject.SetActive(remaining);
             if (remaining) homeButton.Anchor(0.16f, 0.18f, 0.48f, 0.32f);
             else homeButton.Anchor(0.32f, 0.18f, 0.68f, 0.32f);
@@ -373,7 +495,7 @@ namespace Jornalista
             if (fired)
             {
                 endTitle.text = "DEMITIDO";
-                endText.text = $"{limit} dias seguidos errando manchetes.\nO jornal dispensou seus serviços.";
+                endText.text = $"{limit} advertências.\nO jornal dispensou seus serviços.";
                 homeButton.gameObject.SetActive(false);
                 restartButton.gameObject.SetActive(true);
             }
@@ -382,7 +504,8 @@ namespace Jornalista
                 endTitle.text = "VÁ PRA CASA";
                 endText.text = $"{errorsToday} manchetes erradas hoje. O editor te mandou embora.\n" +
                                $"Advertência {strikes} de {limit}." +
-                               (strikes == limit - 1 ? " Mais uma e você está fora." : "");
+                               (strikes == limit - 1 ? " Mais uma e você está fora." : "") +
+                               $"\n<size=26>{gm.Banco.diasCorretosParaRetirarAdvertencia} dias com manchetes certas retiram 1 advertência.</size>";
                 homeButton.gameObject.SetActive(true);
                 restartButton.gameObject.SetActive(false);
                 homeButton.Anchor(0.32f, 0.18f, 0.68f, 0.32f);

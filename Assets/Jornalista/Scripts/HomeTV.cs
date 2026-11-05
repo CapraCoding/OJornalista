@@ -189,7 +189,7 @@ namespace Jornalista
             pulse.On = fresh;
             if (on)
             {
-                urgent.text = report.chamadas != null && report.chamadas.Length > 0 ? report.chamadas[0] : "URGENTE";
+                urgent.text = report.chamadas != null && report.chamadas.Length > 0 ? report.chamadas[0].ToUpperInvariant() : "URGENTE";
                 frase.text = report.frase.ToUpperInvariant();
             }
             var g = glow.color;

@@ -1,281 +1,728 @@
 {
-  "manchetesPorDia": 1,
+  "manchetesPorDia": 3,
   "embaralharOpcoes": true,
   "naoRepetirFrases": true,
   "errosParaIrPraCasa": 3,
   "advertenciasParaDemissao": 3,
+  "diasCorretosParaRetirarAdvertencia": 3,
+  "opcoesPorCampo": 4,
+  "sufixoFrase": "//",
   "chamadasGenericas": [
     "PLANTÃO",
     "CIDADE EM ALERTA",
     "IMAGENS EXCLUSIVAS",
     "VOCÊ PRECISA VER ISSO"
   ],
-  "dias": [
+  "modelos": [
     {
-      "nome": "Dia 1 (EXEMPLO)",
-      "noticias": [
-        {
-          "titulo": "ACIDENTE EM CASCAVEL",
-          "texto": "Acidente envolvendo dois carros, no cruzamento das ruas Antônio Corradi e Osvaldo Dall Oglio, no bairro Brasmadeira, deixou mulher ferida, em Cascavel...\nCom a força do impacto, um dos veículos foi arremessado em direção à esquina e subiu na calçada...\nPassageira do automóvel, ficou ferida e recebeu os primeiros socorros no local...\nEla foi encaminhada para avaliação médica...\nMoradores afirmam que o cruzamento registra acidentes com frequência e cobram melhorias na sinalização para aumentar a segurança...",
-          "local": "BRASMADEIRA, EM CASCAVEL",
-          "campos": [
-            {
-              "rotulo": "Quem",
-              "opcoes": [
-                "Mulher",
-                "Passageira",
-                "Criança",
-                "Motociclista"
-              ]
-            },
-            {
-              "rotulo": "O quê",
-              "opcoes": [
-                "fica ferida",
-                "morre",
-                "é presa"
-              ]
-            },
-            {
-              "rotulo": "Como",
-              "opcoes": [
-                "em acidente entre carros",
-                "em atropelamento",
-                "em incêndio"
-              ]
-            }
-          ],
-          "frasesValidas": [
-            "Mulher fica ferida em acidente entre carros"
-          ],
-          "chamadasSensacionalistas": [
-            "MAIS UM ACIDENTE NO MESMO CRUZAMENTO!",
-            "MORADORES EM PÂNICO!"
-          ]
-        }
+      "titulo": "Acidente entre carro e motocicleta",
+      "texto": "Motociclista fica ferido após batida com carro. A ocorrência foi registrada no cruzamento da [ruas], no bairro [bairro], em [cidade]. A vítima recebeu atendimento do [Siate/Samu] e foi encaminhada para [unidade], conforme as informações disponíveis.",
+      "local": "Cruzamento da [ruas], no bairro [bairro], em [cidade]",
+      "frasesValidas": [
+        "Motociclista | fica ferido | em batida com carro",
+        "Acidente entre carro e moto | deixa | uma pessoa ferida",
+        "Batida | é registrada | em cruzamento do [bairro]"
+      ],
+      "chamadasSensacionalistas": [
+        "Motociclista fica ferido após batida em cruzamento",
+        "Acidente entre carro e moto mobiliza equipes de socorro"
       ]
     },
     {
-      "nome": "Dia 2 (EXEMPLO)",
-      "noticias": [
-        {
-          "titulo": "QUEDA DE MOTO NA BR-277",
-          "texto": "Um motociclista de 27 anos ficou ferido após perder o controle da motocicleta na BR-277, em Cascavel...\nO piloto foi atendido pelo Siate ainda na rodovia e levado ao hospital...\nSegundo a polícia rodoviária, a pista estava molhada no momento do acidente...",
-          "local": "BR-277, EM CASCAVEL",
-          "campos": [
-            {
-              "rotulo": "Quem",
-              "opcoes": [
-                "Motociclista",
-                "Piloto",
-                "Homem",
-                "Ciclista",
-                "Pedestre"
-              ]
-            },
-            {
-              "rotulo": "O quê",
-              "opcoes": [
-                "fica ferido",
-                "morre",
-                "foge"
-              ]
-            },
-            {
-              "rotulo": "Como",
-              "opcoes": [
-                "após queda na rodovia",
-                "em briga de trânsito",
-                "em assalto"
-              ]
-            }
-          ],
-          "frasesValidas": [
-            "Motociclista fica ferido após queda na rodovia"
-          ],
-          "chamadasSensacionalistas": [
-            "RODOVIA DA MORTE!",
-            "TRAGÉDIA SOBRE DUAS RODAS!"
-          ]
-        }
+      "titulo": "Acidente entre duas motocicletas",
+      "texto": "Duas motocicletas se envolveram em uma batida no cruzamento da [rua/avenida e cruzamento], no bairro [bairro], em [cidade]. [Número] pessoas ficaram feridas. As vítimas receberam atendimento de [equipes] e foram encaminhadas para [unidades], conforme informado.",
+      "local": "[Rua/avenida e cruzamento], no bairro [bairro], em [cidade]",
+      "frasesValidas": [
+        "Duas motos | se envolvem | em batida",
+        "Acidente entre motocicletas | deixa | [número] feridos",
+        "Motociclistas | ficam feridos | em acidente"
+      ],
+      "chamadasSensacionalistas": [
+        "Batida entre motos deixa [número] pessoas feridas",
+        "Acidente mobiliza equipes de socorro"
       ]
     },
     {
-      "nome": "Dia 3 (EXEMPLO)",
-      "noticias": [
-        {
-          "titulo": "CHUVA NO CENTRO",
-          "texto": "A chuva forte do fim da tarde alagou ruas do Centro de Cascavel...\nMotoristas tiveram dificuldade para passar pelos pontos de alagamento...\nA Defesa Civil não registrou feridos...",
-          "local": "CENTRO, EM CASCAVEL",
-          "campos": [
-            {
-              "rotulo": "O quê",
-              "opcoes": [
-                "Chuva forte",
-                "Temporal",
-                "Ventania",
-                "Granizo"
-              ]
-            },
-            {
-              "rotulo": "Ação",
-              "opcoes": [
-                "alaga",
-                "destrói",
-                "interdita"
-              ]
-            },
-            {
-              "rotulo": "Onde",
-              "opcoes": [
-                "ruas do Centro",
-                "escolas",
-                "rodovia"
-              ]
-            }
-          ],
-          "frasesValidas": [
-            "Chuva forte alaga ruas do Centro"
-          ],
-          "chamadasSensacionalistas": [
-            "CIDADE DEBAIXO D'ÁGUA!",
-            "CAOS NAS RUAS!"
-          ]
-        }
+      "titulo": "Engavetamento",
+      "texto": "Câmera de segurança registrou um engavetamento envolvendo [número] veículos na [avenida/rua], próximo a [referência], em [cidade]. As imagens mostram que um dos motoristas [dinâmica confirmada]. Não houve feridos. Os veículos tiveram [danos materiais].",
+      "local": "[Avenida/rua], próximo a [referência], em [cidade]",
+      "frasesValidas": [
+        "Câmera | flagra | engavetamento",
+        "Batida | envolve | [número] veículos",
+        "Ninguém | fica ferido | em engavetamento"
+      ],
+      "chamadasSensacionalistas": [
+        "Câmera registra sequência de batidas entre veículos",
+        "Engavetamento envolve [número] carros na [avenida/rua]"
       ]
     },
     {
-      "nome": "Dia 4 (EXEMPLO)",
-      "noticias": [
-        {
-          "titulo": "BATIDA NO CANCELLI",
-          "texto": "Uma batida entre dois carros no cruzamento das ruas Paraná e das Palmeiras, no bairro Cancelli, deixou uma mulher ferida, em Cascavel...\nCom o impacto, um dos veículos parou sobre a calçada...\nA motorista recebeu atendimento no local e foi levada para avaliação médica...\nMoradores dizem que o cruzamento é perigoso e pedem mais sinalização...",
-          "local": "CANCELLI, EM CASCAVEL",
-          "campos": [
-            {
-              "rotulo": "Quem",
-              "opcoes": [
-                "Mulher",
-                "Motorista",
-                "Passageira",
-                "Criança"
-              ]
-            },
-            {
-              "rotulo": "O quê",
-              "opcoes": [
-                "fica ferida",
-                "morre",
-                "é presa"
-              ]
-            },
-            {
-              "rotulo": "Como",
-              "opcoes": [
-                "em acidente entre carros",
-                "em atropelamento",
-                "em incêndio"
-              ]
-            }
-          ],
-          "frasesValidas": [
-            "Mulher fica ferida em acidente entre carros"
-          ],
-          "chamadasSensacionalistas": [
-            "DE NOVO!",
-            "ATÉ QUANDO?!"
-          ]
-        }
+      "titulo": "Acidente com vítima ferida",
+      "texto": "Uma pessoa ficou ferida após um acidente de trânsito na [rua/avenida/rodovia], no bairro [bairro], em [cidade]. Conforme as informações apuradas, o motorista [descrever somente a dinâmica confirmada]. A vítima [ferimentos] e foi atendida por [equipe], com encaminhamento para [unidade].",
+      "local": "[Rua/avenida/rodovia], no bairro [bairro], em [cidade]",
+      "frasesValidas": [
+        "Pessoa | fica ferida | em acidente",
+        "Vítima | é atendida | após acidente",
+        "Acidente | deixa | pessoa ferida"
+      ],
+      "chamadasSensacionalistas": [
+        "Acidente deixa pessoa ferida no [bairro]",
+        "Vítima é socorrida após batida"
       ]
     },
     {
-      "nome": "Dia 5 (EXEMPLO)",
-      "noticias": [
-        {
-          "titulo": "MOTOCICLISTA SE FERE NA BR-467",
-          "texto": "Um motociclista ficou ferido depois de cair da moto na BR-467, em Cascavel...\nO condutor foi socorrido e levado ao hospital...\nA pista estava molhada no momento da queda...",
-          "local": "BR-467, EM CASCAVEL",
-          "campos": [
-            {
-              "rotulo": "Quem",
-              "opcoes": [
-                "Motociclista",
-                "Piloto",
-                "Condutor",
-                "Homem",
-                "Ciclista"
-              ]
-            },
-            {
-              "rotulo": "O quê",
-              "opcoes": [
-                "fica ferido",
-                "morre",
-                "foge"
-              ]
-            },
-            {
-              "rotulo": "Como",
-              "opcoes": [
-                "após queda na rodovia",
-                "em briga de trânsito",
-                "em assalto"
-              ]
-            }
-          ],
-          "frasesValidas": [
-            "Motociclista fica ferido após queda na rodovia"
-          ],
-          "chamadasSensacionalistas": [
-            "MAIS UMA VÍTIMA NA RODOVIA!",
-            "IMAGENS FORTES!"
-          ]
-        }
+      "titulo": "Acidente com morte",
+      "texto": "Uma pessoa morreu após um acidente de trânsito na [rodovia/rua e trecho], em [cidade]. A ocorrência foi registrada [data/período]. Segundo as autoridades, o motorista [descrição confirmada]. O caso foi [encaminhamento/investigação].",
+      "local": "[Rodovia/rua e trecho], em [cidade]",
+      "frasesValidas": [
+        "Acidente | termina | com morte",
+        "Pessoa | morre | em acidente de trânsito",
+        "Vítima | não resiste | aos ferimentos"
+      ],
+      "chamadasSensacionalistas": [
+        "Acidente fatal é registrado em [cidade]",
+        "Ocorrência termina com uma morte"
       ]
     },
     {
-      "nome": "Dia 6 (EXEMPLO)",
-      "noticias": [
-        {
-          "titulo": "TEMPORAL NO CENTRO",
-          "texto": "Um temporal no início da noite deixou ruas do Centro de Cascavel alagadas...\nCarros ficaram parados nos pontos de alagamento...\nNão houve registro de feridos...",
-          "local": "CENTRO, EM CASCAVEL",
-          "campos": [
-            {
-              "rotulo": "O quê",
-              "opcoes": [
-                "Temporal",
-                "Chuva forte",
-                "Ventania",
-                "Granizo"
-              ]
-            },
-            {
-              "rotulo": "Ação",
-              "opcoes": [
-                "alaga",
-                "destrói",
-                "interdita"
-              ]
-            },
-            {
-              "rotulo": "Onde",
-              "opcoes": [
-                "ruas do Centro",
-                "escolas",
-                "rodovia"
-              ]
-            }
-          ],
-          "frasesValidas": [
-            "Temporal alaga ruas do Centro"
-          ],
-          "chamadasSensacionalistas": [
-            "O CÉU DESABOU!",
-            "CIDADE EM ALERTA!"
-          ]
-        }
+      "titulo": "Atropelamento",
+      "texto": "Pedestre ficou ferido após ser atingido por [veículo] na [rua/avenida e referência], no bairro [bairro], em [cidade]. A vítima recebeu atendimento de [equipe] e foi encaminhada para [unidade], conforme as informações repassadas.",
+      "local": "[Rua/avenida e referência], no bairro [bairro], em [cidade]",
+      "frasesValidas": [
+        "Pedestre | fica ferido | após ser atingido por veículo",
+        "Atropelamento | é registrado | no [bairro]",
+        "Vítima | é socorrida | após atropelamento"
+      ],
+      "chamadasSensacionalistas": [
+        "Pedestre é atingido no [bairro] e precisa de atendimento",
+        "Atropelamento mobiliza equipes de socorro"
+      ]
+    },
+    {
+      "titulo": "Agressão com arma ou objeto",
+      "texto": "Uma pessoa ficou ferida após uma agressão na [rua/avenida e referência], no bairro [bairro], em [cidade]. Conforme as informações apuradas, [descrever a dinâmica com atribuição de incerteza]. A vítima foi atingida com [objeto], [ferimentos] e recebeu atendimento de [equipe]. O suspeito fugiu.",
+      "local": "[Rua/avenida e referência], no bairro [bairro], em [cidade]",
+      "frasesValidas": [
+        "Homem | fica ferido | após agressão",
+        "Vítima | é atingida | com [objeto]",
+        "Suspeito | foge | após agressão"
+      ],
+      "chamadasSensacionalistas": [
+        "Agressão deixa pessoa ferida no [bairro]",
+        "Homem é socorrido após ataque"
+      ]
+    },
+    {
+      "titulo": "Apreensão de drogas",
+      "texto": "Policiais apreenderam [quantidade] de [droga] durante uma abordagem na [rodovia/rua/bairro], em [cidade]. A ocorrência foi encaminhada à [unidade policial], e [pessoa] ficou à disposição das autoridades, conforme informado.",
+      "local": "[Rodovia/rua/bairro], em [cidade]",
+      "frasesValidas": [
+        "Polícia | apreende | [quantidade] de droga",
+        "Entorpecente | é localizado | durante abordagem",
+        "Apreensão | é realizada | na [rodovia/rua/bairro]"
+      ],
+      "chamadasSensacionalistas": [
+        "Apreensão de drogas é realizada em [cidade]",
+        "Polícia encontra [quantidade] de entorpecente"
+      ]
+    },
+    {
+      "titulo": "Fiscalização de trânsito",
+      "texto": "Operação de fiscalização realizada no bairro [região/bairro], em [cidade], resultou em [número de infrações] autos de infração. Durante a ação, [número de pessoas] pessoas e [número de veículos] veículos foram abordados. [Irregularidades e veículos recolhidos].",
+      "local": "Bairro [região/bairro], em [cidade]",
+      "frasesValidas": [
+        "Fiscalização | registra | [número de infrações] infrações",
+        "Operação | aborda | [número de veículos] veículos",
+        "Veículos | são recolhidos | durante fiscalização"
+      ],
+      "chamadasSensacionalistas": [
+        "Operação de trânsito registra mais de [número de infrações] infrações",
+        "Fiscalização termina com veículos recolhidos"
+      ]
+    },
+    {
+      "titulo": "Prisão ou cumprimento de mandado",
+      "texto": "Uma pessoa foi presa no bairro [bairro], em [cidade], durante cumprimento de mandado. Após a abordagem, ela foi encaminhada à [delegacia/unidade], onde ficou à disposição da Justiça, conforme informado.",
+      "local": "[Bairro], em [cidade]",
+      "frasesValidas": [
+        "Pessoa | é presa | em [cidade]",
+        "Polícia | cumpre | mandado no [bairro]",
+        "Suspeito | é encaminhado | à delegacia"
+      ],
+      "chamadasSensacionalistas": [
+        "Ação policial termina com prisão no [bairro]",
+        "Mandado é cumprido em [cidade]"
+      ]
+    },
+    {
+      "titulo": "Veículo sai da pista ou capota",
+      "texto": "Um veículo capotou na [rodovia/rua e quilômetro ou referência], em [cidade]. [Número] pessoas ficaram feridas. As vítimas receberam atendimento de [equipe] e foram encaminhadas para [unidade].",
+      "local": "[Rodovia/rua e quilômetro ou referência], em [cidade]",
+      "frasesValidas": [
+        "Carro | capota | na [rodovia/rua e quilômetro ou referência]",
+        "Acidente | deixa | [número] feridos"
+      ],
+      "chamadasSensacionalistas": [
+        "Veículo capota e mobiliza socorro em [cidade]",
+        "Acidente é registrado em [cidade]"
+      ]
+    },
+    {
+      "titulo": "Acidente com veículo de aplicativo ou transporte",
+      "texto": "Uma ocorrência envolvendo um veículo utilizado para [transporte por aplicativo/carona] foi registrada na [rodovia/rua]. Durante a abordagem, policiais encontraram [material] com um passageiro, conforme informado. A ocorrência foi encaminhada à [unidade policial].",
+      "local": "[Rodovia/rua], em [cidade]",
+      "frasesValidas": [
+        "Passageiro | é flagrado | com [material]",
+        "Abordagem | termina | com apreensão",
+        "Ocorrência | é encaminhada | à Polícia Civil"
+      ],
+      "chamadasSensacionalistas": [
+        "Abordagem revela [material] escondido em veículo",
+        "Polícia apreende [material] durante fiscalização"
+      ]
+    },
+    {
+      "titulo": "Danos materiais sem feridos",
+      "texto": "Acidente envolvendo [número] veículos foi registrado no cruzamento da [rua/avenida/cruzamento], no bairro [bairro], em [cidade]. Apesar do impacto, ninguém ficou ferido. A ocorrência resultou apenas em danos materiais.",
+      "local": "[Rua/avenida/cruzamento], no bairro [bairro], em [cidade]",
+      "frasesValidas": [
+        "Ninguém | fica ferido | em batida",
+        "Acidente | termina | apenas com danos materiais",
+        "Batida | envolve | [número] veículos"
+      ],
+      "chamadasSensacionalistas": [
+        "Batida envolve [número] veículos, mas ninguém fica ferido",
+        "Acidente causa danos materiais no [bairro]"
+      ]
+    },
+    {
+      "titulo": "Pessoa ferida por queda",
+      "texto": "Uma pessoa ficou ferida após uma queda em [endereço ou referência], em [cidade]. A vítima recebeu atendimento de [equipe] e foi encaminhada para [unidade]. As circunstâncias [foram esclarecidas/ainda não foram esclarecidas], conforme os dados disponíveis.",
+      "local": "[Endereço ou referência], em [cidade]",
+      "frasesValidas": [
+        "Pessoa | fica ferida | após queda",
+        "Vítima | é atendida | após queda",
+        "Queda | mobiliza | equipe de socorro"
+      ],
+      "chamadasSensacionalistas": [
+        "Queda deixa pessoa ferida em [cidade]",
+        "Vítima precisa de atendimento após queda"
       ]
     }
-  ]
+  ],
+  "valores": [
+    {
+      "chave": "cidade",
+      "itens": [
+        "Cascavel"
+      ]
+    },
+    {
+      "chave": "bairro",
+      "itens": [
+        "Centro",
+        "Brasmadeira",
+        "Cancelli",
+        "Neva",
+        "Country",
+        "Periolo",
+        "Cascavel Velho",
+        "Santa Cruz",
+        "Interlagos",
+        "Alto Alegre",
+        "Universitário",
+        "Pacaembu"
+      ]
+    },
+    {
+      "chave": "ruas",
+      "itens": [
+        "Rua Paraná com a Rua Recife",
+        "Rua Carlos Gomes com a Rua Souza Naves",
+        "Rua Antônio Corradi com a Rua Osvaldo Dall Oglio",
+        "Rua Sete de Setembro com a Rua Rio Grande do Sul"
+      ]
+    },
+    {
+      "chave": "número",
+      "itens": [
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "chave": "número de infrações",
+      "itens": [
+        "35",
+        "48",
+        "62",
+        "80"
+      ]
+    },
+    {
+      "chave": "número de pessoas",
+      "itens": [
+        "120",
+        "150",
+        "210"
+      ]
+    },
+    {
+      "chave": "número de veículos",
+      "itens": [
+        "90",
+        "110",
+        "140"
+      ]
+    },
+    {
+      "chave": "equipe",
+      "itens": [
+        "equipe do Siate",
+        "socorristas do Samu",
+        "equipe do Corpo de Bombeiros"
+      ]
+    },
+    {
+      "chave": "equipes",
+      "itens": [
+        "equipes do Siate e do Samu",
+        "socorristas do Siate",
+        "equipes do Corpo de Bombeiros"
+      ]
+    },
+    {
+      "chave": "unidade",
+      "itens": [
+        "a UPA Veneza",
+        "a UPA Brasília",
+        "o Hospital Universitário"
+      ]
+    },
+    {
+      "chave": "unidades",
+      "itens": [
+        "a UPA Veneza e o Hospital Universitário",
+        "o Hospital Universitário",
+        "a UPA Brasília"
+      ]
+    },
+    {
+      "chave": "unidade policial",
+      "itens": [
+        "Delegacia de Polícia Civil",
+        "15ª Subdivisão Policial"
+      ]
+    },
+    {
+      "chave": "rodovia/rua",
+      "itens": [
+        "BR-277",
+        "BR-467",
+        "Rua Paraná",
+        "Avenida Brasil"
+      ]
+    },
+    {
+      "chave": "avenida/rua",
+      "itens": [
+        "Avenida Brasil",
+        "Rua Paraná",
+        "Avenida Tancredo Neves"
+      ]
+    },
+    {
+      "chave": "referência",
+      "itens": [
+        "um supermercado",
+        "uma escola",
+        "um posto de combustíveis",
+        "uma praça"
+      ]
+    },
+    {
+      "chave": "rua/avenida e cruzamento",
+      "itens": [
+        "Avenida Brasil com a Rua Paraná",
+        "Rua Carlos Gomes com a Rua Souza Naves",
+        "Avenida Tancredo Neves com a Rua Recife"
+      ]
+    },
+    {
+      "chave": "rua/avenida/cruzamento",
+      "itens": [
+        "@rua/avenida e cruzamento"
+      ]
+    },
+    {
+      "chave": "rua/avenida e referência",
+      "itens": [
+        "Avenida Brasil, perto de um supermercado",
+        "Rua Paraná, perto de uma escola",
+        "Avenida Tancredo Neves, perto de uma praça"
+      ]
+    },
+    {
+      "chave": "rua/avenida/rodovia",
+      "itens": [
+        "Avenida Brasil",
+        "Rua Paraná",
+        "BR-277"
+      ]
+    },
+    {
+      "chave": "rodovia/rua e trecho",
+      "itens": [
+        "BR-277, perto do trevo Cataratas",
+        "BR-467, na saída para Toledo",
+        "Rua Paraná, perto da Catedral"
+      ]
+    },
+    {
+      "chave": "rodovia/rua e quilômetro ou referência",
+      "itens": [
+        "BR-277, km 585",
+        "BR-467, km 12",
+        "PR-180, perto do trevo"
+      ]
+    },
+    {
+      "chave": "rodovia/rua/bairro",
+      "itens": [
+        "BR-277",
+        "Rua Paraná",
+        "Avenida Brasil"
+      ]
+    },
+    {
+      "chave": "região/bairro",
+      "itens": [
+        "@bairro"
+      ]
+    },
+    {
+      "chave": "endereço ou referência",
+      "itens": [
+        "uma residência no bairro Neva",
+        "uma calçada da Rua Paraná",
+        "um estabelecimento comercial no Centro"
+      ]
+    },
+    {
+      "chave": "data/período",
+      "itens": [
+        "na madrugada desta quinta-feira",
+        "no fim da tarde de ontem",
+        "na noite de domingo"
+      ]
+    },
+    {
+      "chave": "dinâmica confirmada",
+      "itens": [
+        "@Dinâmica"
+      ]
+    },
+    {
+      "chave": "descrição confirmada",
+      "itens": [
+        "@Dinâmica"
+      ]
+    },
+    {
+      "chave": "descrever somente a dinâmica confirmada",
+      "itens": [
+        "@Dinâmica"
+      ]
+    },
+    {
+      "chave": "descrever a dinâmica com atribuição de incerteza",
+      "itens": [
+        "a vítima teria sido atingida durante uma discussão",
+        "o suspeito teria se aproximado e atacado a vítima",
+        "a agressão teria começado após uma briga"
+      ]
+    },
+    {
+      "chave": "ferimentos",
+      "itens": [
+        "sofreu ferimentos leves",
+        "teve contusão no quadril",
+        "sofreu corte na cabeça",
+        "teve fratura na perna",
+        "teve escoriações"
+      ]
+    },
+    {
+      "chave": "encaminhamento/investigação",
+      "itens": [
+        "encaminhado à Polícia Civil",
+        "registrado pela Polícia Militar e será investigado"
+      ]
+    },
+    {
+      "chave": "danos materiais",
+      "itens": [
+        "danos na lateral",
+        "danos na parte dianteira",
+        "danos na traseira"
+      ]
+    },
+    {
+      "chave": "veículo",
+      "itens": [
+        "um carro",
+        "uma caminhonete",
+        "uma motocicleta"
+      ]
+    },
+    {
+      "chave": "objeto",
+      "itens": [
+        "uma faca",
+        "um pedaço de madeira",
+        "uma barra de ferro"
+      ]
+    },
+    {
+      "chave": "quantidade",
+      "itens": [
+        "2 quilos",
+        "500 gramas",
+        "15 quilos"
+      ]
+    },
+    {
+      "chave": "droga",
+      "itens": [
+        "maconha",
+        "cocaína",
+        "crack"
+      ]
+    },
+    {
+      "chave": "pessoa",
+      "itens": [
+        "um homem de 32 anos",
+        "uma mulher de 27 anos",
+        "um jovem de 19 anos"
+      ]
+    },
+    {
+      "chave": "material",
+      "itens": [
+        "maconha",
+        "munições",
+        "cigarros contrabandeados"
+      ]
+    },
+    {
+      "chave": "irregularidades e veículos recolhidos",
+      "itens": [
+        "Três veículos foram recolhidos ao pátio",
+        "Motoristas foram flagrados sem habilitação e veículos foram recolhidos"
+      ]
+    }
+  ],
+  "termos": [
+    {
+      "chave": "Título gráfico",
+      "itens": [
+        "CÂMERA FLAGRA BATIDA ENTRE DOIS CARROS",
+        "MOTOCICLISTA FICA FERIDO EM ACIDENTE",
+        "HOMEM É FERIDO NA CABEÇA",
+        "TRÊS PESSOAS FICAM FERIDAS EM BATIDA"
+      ]
+    },
+    {
+      "chave": "Dinâmica",
+      "itens": [
+        "seguia pela rua",
+        "trafegava pela avenida",
+        "tentou fazer conversão à esquerda",
+        "atravessava o cruzamento",
+        "perdeu o controle da direção",
+        "atingiu a traseira",
+        "bateu na lateral",
+        "foi projetado para a frente"
+      ]
+    },
+    {
+      "chave": "Localização",
+      "itens": [
+        "no cruzamento das ruas",
+        "na região central",
+        "no bairro",
+        "próximo ao cruzamento",
+        "na região do Lago",
+        "na pista sentido bairro-centro",
+        "na pista sentido centro-bairro"
+      ]
+    },
+    {
+      "chave": "Atendimento",
+      "itens": [
+        "foi atendido pelo Siate",
+        "recebeu os primeiros socorros",
+        "foi avaliado no local",
+        "recebeu atendimento do Samu",
+        "foi encaminhado à UPA",
+        "foi levado ao hospital"
+      ]
+    },
+    {
+      "chave": "Ferimentos",
+      "itens": [
+        "sofreu ferimentos leves",
+        "teve contusão no quadril",
+        "sofreu corte na cabeça",
+        "teve fratura na perna",
+        "sofreu fratura exposta",
+        "teve escoriações",
+        "não teve ferimentos"
+      ]
+    },
+    {
+      "chave": "Encaminhamento policial",
+      "itens": [
+        "foi encaminhado à delegacia",
+        "ficou à disposição da Justiça",
+        "ocorrência foi apresentada à Polícia Civil",
+        "caso será investigado"
+      ]
+    },
+    {
+      "chave": "Ação policial",
+      "itens": [
+        "equipe da Polícia Militar esteve no local",
+        "Guarda Municipal auxiliou no controle do trânsito",
+        "Polícia Civil concluiu o inquérito",
+        "equipes atenderam a ocorrência"
+      ]
+    },
+    {
+      "chave": "Câmeras",
+      "itens": [
+        "câmera de segurança flagrou",
+        "imagens mostram",
+        "monitoramento registrou",
+        "sequência foi registrada por câmera"
+      ]
+    },
+    {
+      "chave": "Danos materiais",
+      "itens": [
+        "houve apenas danos materiais",
+        "veículo apresentou danos na lateral",
+        "automóvel ficou danificado na parte dianteira"
+      ]
+    },
+    {
+      "chave": "FRASE",
+      "itens": [
+        "FRASE: ACIDENTE NO BAIRRO [NOME] //",
+        "FRASE: BATIDA NO CENTRO DE CASCAVEL //",
+        "FRASE: AGRESSÃO NO BAIRRO [NOME] //"
+      ]
+    },
+    {
+      "chave": "Ordem do resumo",
+      "itens": [
+        "título curto",
+        "informação principal",
+        "local e ponto de referência",
+        "dinâmica essencial",
+        "vítimas e ferimentos",
+        "atendimento e encaminhamento",
+        "atuação policial quando relevante"
+      ]
+    },
+    {
+      "chave": "Padrão de escrita",
+      "itens": [
+        "objetivo",
+        "factual",
+        "frases curtas",
+        "manter detalhes distintivos",
+        "retirar o que não agrega",
+        "não inventar informações",
+        "evitar repetição de palavras próximas"
+      ]
+    },
+    {
+      "chave": "Veículos",
+      "itens": [
+        "preferir automóvel, motocicleta, veículo, caminhonete ou picape",
+        "não detalhar modelos de carros quando não for necessário"
+      ]
+    },
+    {
+      "chave": "Pontuação e leitura",
+      "itens": [
+        "blocos em linhas separadas",
+        "reticências no fim dos blocos quando seguirem o modelo de resumo",
+        "FRASE final com //"
+      ]
+    },
+    {
+      "chave": "Cuidados",
+      "itens": [
+        "não afirmar causa sem confirmação",
+        "não atribuir culpa sem informação",
+        "não transformar suspeita em fato",
+        "preservar idade e condição da vítima quando relevantes"
+      ]
+    }
+  ],
+  "manual": [
+    {
+      "chave": "Padrão de escrita",
+      "itens": [
+        "objetivo",
+        "factual",
+        "frases curtas",
+        "manter detalhes distintivos",
+        "retirar o que não agrega",
+        "não inventar informações",
+        "evitar repetição de palavras próximas"
+      ]
+    },
+    {
+      "chave": "Cuidados",
+      "itens": [
+        "não afirmar causa sem confirmação",
+        "não atribuir culpa sem informação",
+        "não transformar suspeita em fato",
+        "preservar idade e condição da vítima quando relevantes"
+      ]
+    },
+    {
+      "chave": "Ordem do resumo",
+      "itens": [
+        "título curto",
+        "informação principal",
+        "local e ponto de referência",
+        "dinâmica essencial",
+        "vítimas e ferimentos",
+        "atendimento e encaminhamento",
+        "atuação policial quando relevante"
+      ]
+    },
+    {
+      "chave": "Pontuação e leitura",
+      "itens": [
+        "blocos em linhas separadas",
+        "reticências no fim dos blocos quando seguirem o modelo de resumo",
+        "FRASE final com //"
+      ]
+    },
+    {
+      "chave": "Veículos",
+      "itens": [
+        "preferir automóvel, motocicleta, veículo, caminhonete ou picape",
+        "não detalhar modelos de carros quando não for necessário"
+      ]
+    }
+  ],
+  "dias": []
 }
